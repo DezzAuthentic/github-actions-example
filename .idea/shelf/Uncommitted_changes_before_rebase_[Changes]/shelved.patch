@@ -1,0 +1,24 @@
+Index: .github/workflows/maven.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time\r\n# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven\r\n\r\n# This workflow uses actions that are not certified by GitHub.\r\n# They are provided by a third-party and are governed by\r\n# separate terms of service, privacy policy, and support\r\n# documentation.\r\n\r\nname: Projet CICD\r\n\r\non:\r\n  push:\r\n    branches: [ \"master\" ]\r\n  pull_request:\r\n    branches: [ \"master\" ]\r\n\r\njobs:\r\n  build:\r\n\r\n    runs-on: ubuntu-latest\r\n\r\n    steps:\r\n    - uses: actions/checkout@v3\r\n    - name: Set up JDK 17\r\n      uses: actions/setup-java@v3\r\n      with:\r\n        java-version: '17'\r\n        distribution: 'temurin'\r\n        cache: maven\r\n    - name: Build with Maven\r\n      run: mvn clean install\r\n\r\n    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive\r\n    - name: Update dependency graph\r\n      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+--- a/.github/workflows/maven.yml	(revision 1b776a19487a6ecd3e54846d4861b65189ab00ce)
++++ b/.github/workflows/maven.yml	(date 1710506324993)
+@@ -21,10 +21,10 @@
+ 
+     steps:
+     - uses: actions/checkout@v3
+-    - name: Set up JDK 17
+-      uses: actions/setup-java@v3
++    - name: Set up JDK 1.8
++      uses: actions/setup-java@v1
+       with:
+-        java-version: '17'
++        java-version: '1.8'
+         distribution: 'temurin'
+         cache: maven
+     - name: Build with Maven
