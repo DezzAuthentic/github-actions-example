@@ -1,0 +1,28 @@
+name: Update Dependency Graph
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update-dependency-graph:
+    name: Update Dependency Graph
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+
+      - name: Build and Update Dependency Graph
+        run: |
+          mvn clean install  # Or any other Maven build commands to capture dependencies
+          mvn com.github.ferstl:depgraph-maven-plugin:aggregate  # Update dependency graph using depgraph-maven-plugin
